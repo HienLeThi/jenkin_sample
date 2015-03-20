@@ -8,6 +8,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class GoogleTest {
  private WebDriver driver;
 
+ public static void main(String[] args) {
+	 WebDriver driver = new FirefoxDriver();
+	 driver.get("http://www.google.com/");
+	 driver.quit();
+ }
 // @Test
  public void verifySearch() {
   driver = new FirefoxDriver();
