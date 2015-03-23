@@ -13,7 +13,34 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-  <build>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>org.seleniumhq.selenium</groupId>
+  		<artifactId>selenium-java</artifactId>
+  		<version>2.45.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.seleniumhq.selenium</groupId>
+  		<artifactId>selenium-server</artifactId>
+  		<version>2.45.0</version>
+  	</dependency>
+  	 
+  	
+    <dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>4.11</version>
+</dependency>
+
+<dependency>
+         <groupId>commons-discovery</groupId>
+         <artifactId>commons-discovery</artifactId>
+         <version>0.5</version>
+         <scope>test</scope> 
+    </dependency>
+  </dependencies>
+ <build>
   <sourceDirectory>src/main/java</sourceDirectory>
   <testSourceDirectory>src/test/java</testSourceDirectory>
  
@@ -29,26 +56,17 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
                     <target>1.6</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <!-- Skip the normal tests, we'll run them in the integration-test phase -->
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+             <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.18.1</version>
+        <configuration>
+                    <includes>
+                        
+                        <include>**/*Test.*</include>
+                    </includes>
                 </configuration>
-                
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <skip>false</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+      </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>selenium-maven-plugin</artifactId>
@@ -57,25 +75,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             </plugin>
             
       </plugins>
-    
+    <extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>2.8</version>
+			</extension>
+		</extensions>
 </build>
-  <dependencies>
-  	<dependency>
-  		<groupId>org.seleniumhq.selenium</groupId>
-  		<artifactId>selenium-java</artifactId>
-  		<version>2.45.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.seleniumhq.selenium</groupId>
-  		<artifactId>selenium-server</artifactId>
-  		<version>2.45.0</version>
-  	</dependency>
-  	 
-  	<dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-firefox-driver</artifactId>
-        <version>2.40.0</version>
-    </dependency>
-  </dependencies>
- 
 </project>

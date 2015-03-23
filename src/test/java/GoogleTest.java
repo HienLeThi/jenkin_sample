@@ -1,3 +1,4 @@
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.testng.<span id="IL_AD9" class="IL_AD">annotations</span>.Test;
@@ -5,18 +6,20 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * @author Gaurang_Shah
  */
+ 
 public class GoogleTest {
  private WebDriver driver;
-
- public static void main(String[] args) {
+ @Test
+ public void FirstTest() {
 	 WebDriver driver = new FirefoxDriver();
 	 driver.get("http://www.google.com/");
-	 driver.quit();
+	// driver.quit();
  }
-// @Test
+/**
+ @Test
  public void verifySearch() {
   driver = new FirefoxDriver();
   driver.get("http://www.google.com/");
  // driver.quit();
- }
+ }*/
 }
